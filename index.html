@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Você me ama?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            position: relative;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            background-color: #FFC0CB; /* Cor rosa */
+            color: #fff;
+        }
+        .button:hover {
+            opacity: 0.8;
+        }
+        .ascii-art {
+            font-family: monospace;
+            white-space: pre;
+            line-height: 1.2;
+            margin: 20px 0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ascii-art">
+            <pre>
+  /\_/\  
+ ( o.o ) 
+  > ^ <
+            </pre>
+        </div>
+        <h1>Nena, hoje rola cuzin?</h1>
+        <button class="button button-yes" onclick="answer('yes')">Sim</button>
+        <button class="button button-no" onclick="answer('no')">Não</button>
+    </div>
+
+    <script>
+        let noButton = document.querySelector('.button-no');
+
+        function answer(response) {
+            if (response === 'no') {
+                // Move the "Não" button to a new random position
+                const container = document.querySelector('.container');
+                const containerWidth = container.offsetWidth;
+                const containerHeight = container.offsetHeight;
+                const buttonWidth = noButton.offsetWidth;
+                const buttonHeight = noButton.offsetHeight;
+
+                const maxX = containerWidth - buttonWidth;
+                const maxY = containerHeight - buttonHeight;
+
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
+
+                noButton.style.position = 'absolute';
+                noButton.style.left = randomX + 'px';
+                noButton.style.top = randomY + 'px';
+            } else {
+                alert('Que bom que você me ama!');
+            }
+        }
+    </script>
+</body>
+</html>
